@@ -23,6 +23,11 @@ module Imgurapi
       end
 
       # https://api.imgur.com/endpoints/image#image-upload with base64 image
+      def image_upload_64_params(base64, params)
+        Imgurapi::Image.new communication.call(:post, 'image', params)
+      end
+
+      # https://api.imgur.com/endpoints/image#image-upload with base64 image
       def image_upload_64(base64)
         Imgurapi::Image.new communication.call(:post, 'image', image: base64)
       end
