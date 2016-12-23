@@ -22,6 +22,16 @@ module Imgurapi
         Imgurapi::Image.new communication.call(:post, 'image', image: Base64.encode64(file.read))
       end
 
+      # https://api.imgur.com/endpoints/image#image-upload with base64 image
+      def image_upload_64(base64)
+        Imgurapi::Image.new communication.call(:post, 'image', image: base64)
+      end
+
+      # https://api.imgur.com/endpoints/image#image-upload with base64 image and album param
+      def image_upload_album_64(base64,album)
+        Imgurapi::Image.new communication.call(:post, 'image', image: base64, album: album)
+      end
+
       # https://api.imgur.com/endpoints/image#image-delete
       def image_delete(id)
         if id.kind_of? Imgurapi::Image
